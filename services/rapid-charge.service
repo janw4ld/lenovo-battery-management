@@ -1,0 +1,13 @@
+[Unit]
+Description=Lenovo ACPI call to manage battery rapid charge
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/systemctl disable --now battery-conservation.service
+ExecStart=/bin/sh -c /usr/bin/rapid-charge-on
+ExecReload=/bin/sh -c '/usr/bin/rapid-charge-off; /bin/bash /usr/bin/rapid-charge-on'
+ExecStop=/bin/sh -c /usr/bin/rapid-charge-off
+
+[Install]
+WantedBy=multi-user.target

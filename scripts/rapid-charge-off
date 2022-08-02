@@ -1,5 +1,9 @@
-echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x08' > /proc/acpi/call > /dev/null
-echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call > /dev/null 
-cat /proc/acpi/call; printf ', '
-echo '\_SB.PCI0.LPC0.EC0.BTSM' > /proc/acpi/call
-cat /proc/acpi/call; printf '\n'
+if [[ "$(systemctl is-system-running || true)" == "stopping" ]]; then
+    echo "leaving your settings persistent between shutdowns"
+else
+    echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x08' > /proc/acpi/call > /dev/null
+    echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call > /dev/null 
+    cat /proc/acpi/call; printf ', '
+    echo '\_SB.PCI0.LPC0.EC0.BTSM' > /proc/acpi/call
+    cat /proc/acpi/call; printf '\n'
+fi

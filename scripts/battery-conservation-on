@@ -1,4 +1,4 @@
-#disable rapid-charge
+#make sure rapid-charge is disabled
 echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x08' > /proc/acpi/call > /dev/null
 #enable battery conservation
 echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x03' > /proc/acpi/call

@@ -1,10 +1,14 @@
+#check if system is shutting down
 if [[ "$(systemctl is-system-running || true)" == "stopping" ]]; then
+    #if so, do nothing!
     echo "leaving your settings persistent between shutdowns"
 else
+    #otherwise disable battery-conservation
     echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x05' > /proc/acpi/call
+    #ask acpi for rapid-charge status, then print it to terminal
     echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call > /dev/null
     cat /proc/acpi/call; printf ', '
+    #ask acpi for battery-conservation status, then print it to terminal
     echo '\_SB.PCI0.LPC0.EC0.BTSM' > /proc/acpi/call
     cat /proc/acpi/call; printf '\n'
 fi
-

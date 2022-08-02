@@ -1,6 +1,9 @@
+#make sure battery-conservation is disabled
 echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x05' > /proc/acpi/call
 echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x07' > /proc/acpi/call > /dev/null
+#ask acpi for rapid-charge status, then print it to terminal
 echo '\_SB.PCI0.LPC0.EC0.QCHO' > /proc/acpi/call > /dev/null
 cat /proc/acpi/call; printf ', '
+#ask acpi for battery-conservation status, then print it to terminal
 echo '\_SB.PCI0.LPC0.EC0.BTSM' > /proc/acpi/call
 cat /proc/acpi/call; printf '\n'

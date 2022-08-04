@@ -1,6 +1,6 @@
 # lenovo-battery-management
 `acpi_call` based scripts to manage rapid charging and battery conservation on lenovo laptops with optional systemd services. </br>
-**this tools was tested on 15ACH6 only**</br>
+**this tool was tested on 15ACH6 only**</br>
 to install the scripts run
 ```
 git clone https://github.com/janw4ld/lenovo-battery-management.git

@@ -1,0 +1,2 @@
+echo '\_SB.PCI0.LPC0.EC0.SPMO' > /proc/acpi/call 
+cat /proc/acpi/call; printf '\n'
